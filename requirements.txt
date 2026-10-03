@@ -1,0 +1,7 @@
+# AI Finance Interview Coach - direct dependencies
+# Pinned to the versions tested in development.
+
+streamlit==1.64.0
+google-genai==2.27.0
+python-dotenv==1.2.4
+pandas==3.0.6

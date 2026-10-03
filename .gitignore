@@ -1,0 +1,14 @@
+# Secrets - never commit the API key
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local session history (contains user attempt data, not secrets)
+data/session_history.json

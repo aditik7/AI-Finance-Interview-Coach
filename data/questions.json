@@ -1,0 +1,842 @@
+[
+    {
+        "id": 1,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "What are the three main financial statements?",
+        "options": [
+            "Income Statement, Balance Sheet, Cash Flow Statement",
+            "Income Statement, Trial Balance, General Ledger",
+            "Balance Sheet, Budget, Tax Return",
+            "Cash Flow Statement, Budget, Income Statement"
+        ],
+        "answer": "Income Statement, Balance Sheet, Cash Flow Statement",
+        "explanation": "The three primary financial statements are the Income Statement, Balance Sheet, and Cash Flow Statement. Together, they provide a comprehensive view of a company's profitability, financial position, and cash movements."
+    },
+    {
+        "id": 2,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Easy",
+        "question": "What is the basic formula for Enterprise Value?",
+        "options": [
+            "Market Capitalization + Debt - Cash",
+            "Market Capitalization - Debt + Cash",
+            "Revenue + EBITDA",
+            "Assets - Liabilities"
+        ],
+        "answer": "Market Capitalization + Debt - Cash",
+        "explanation": "Enterprise Value represents the value of the operating business available to all capital providers. A common simplified formula is Equity Value + Debt - Cash."
+    },
+    {
+        "id": 3,
+        "role": "Equity Research",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "If a company has a P/E ratio of 15x and EPS of ₹20, what is its implied share price?",
+        "options": [
+            "₹150",
+            "₹300",
+            "₹35",
+            "₹750"
+        ],
+        "answer": "₹300",
+        "explanation": "P/E = Share Price / EPS. Therefore, Share Price = P/E × EPS = 15 × ₹20 = ₹300."
+    },
+    {
+        "id": 4,
+        "role": "Financial Analyst",
+        "topic": "Corporate Finance",
+        "difficulty": "Medium",
+        "question": "What generally happens to a company's free cash flow when capital expenditure increases, assuming everything else remains constant?",
+        "options": [
+            "Free cash flow increases",
+            "Free cash flow decreases",
+            "Free cash flow remains unchanged",
+            "Revenue automatically increases"
+        ],
+        "answer": "Free cash flow decreases",
+        "explanation": "Capital expenditure is a cash outflow. Since free cash flow is generally calculated after deducting capital expenditure, an increase in CapEx reduces free cash flow when other factors remain constant."
+    },
+    {
+        "id": 5,
+        "role": "Investment Banking",
+        "topic": "Investment Banking",
+        "difficulty": "Hard",
+        "question": "In an accretion/dilution analysis, an acquisition is accretive when:",
+        "options": [
+            "The acquirer's EPS increases after the transaction",
+            "The target's revenue decreases",
+            "The acquirer's debt decreases",
+            "The target's share price falls"
+        ],
+        "answer": "The acquirer's EPS increases after the transaction",
+        "explanation": "A transaction is generally described as accretive when the acquirer's earnings per share increase as a result of the acquisition, all else equal."
+    },
+    {
+        "id": 6,
+        "role": "Equity Research",
+        "topic": "Financial Markets",
+        "difficulty": "Easy",
+        "question": "What does IPO stand for?",
+        "options": [
+            "Initial Public Offering",
+            "International Purchase Order",
+            "Investment Portfolio Option",
+            "Initial Private Offering"
+        ],
+        "answer": "Initial Public Offering",
+        "explanation": "IPO stands for Initial Public Offering. It is the process through which a private company offers its shares to the public for the first time."
+    },
+    {
+        "id": 7,
+        "role": "Financial Analyst",
+        "topic": "Financial Modelling",
+        "difficulty": "Medium",
+        "question": "What is the purpose of sensitivity analysis in a financial model?",
+        "options": [
+            "To test how outputs change when key assumptions change",
+            "To eliminate all assumptions from the model",
+            "To calculate historical revenue only",
+            "To replace financial statements"
+        ],
+        "answer": "To test how outputs change when key assumptions change",
+        "explanation": "Sensitivity analysis examines how changes in assumptions such as revenue growth, margins, or discount rates affect model outputs such as valuation or cash flow."
+    },
+    {
+        "id": 8,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Medium",
+        "question": "If depreciation expense increases while all other factors remain constant, what generally happens to EBIT?",
+        "options": [
+            "EBIT increases",
+            "EBIT decreases",
+            "EBIT remains unchanged",
+            "Revenue increases"
+        ],
+        "answer": "EBIT decreases",
+        "explanation": "Depreciation is an operating expense. An increase in depreciation therefore reduces EBIT, assuming revenue and other expenses remain constant."
+    },
+    {
+        "id": 9,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "Which financial statement shows a company's financial position at a single point in time?",
+        "options": [
+            "Balance Sheet",
+            "Income Statement",
+            "Cash Flow Statement",
+            "Statement of Changes in Equity"
+        ],
+        "answer": "Balance Sheet",
+        "explanation": "The Balance Sheet reports a company's assets, liabilities, and shareholders' equity as of a specific date, giving a snapshot of its financial position."
+    },
+    {
+        "id": 10,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "What is the fundamental accounting equation?",
+        "options": [
+            "Assets = Liabilities + Shareholders' Equity",
+            "Assets = Liabilities - Shareholders' Equity",
+            "Assets + Liabilities = Shareholders' Equity",
+            "Revenue = Expenses + Net Income"
+        ],
+        "answer": "Assets = Liabilities + Shareholders' Equity",
+        "explanation": "The accounting equation states that a company's assets are financed by liabilities and shareholders' equity, which is why the balance sheet always balances."
+    },
+    {
+        "id": 11,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "Under accrual accounting, when is revenue recognized?",
+        "options": [
+            "When it is earned, regardless of when cash is received",
+            "Only when cash is collected",
+            "At the end of the fiscal year",
+            "When the invoice is created and paid"
+        ],
+        "answer": "When it is earned, regardless of when cash is received",
+        "explanation": "Accrual accounting recognizes revenue when it is earned and expenses when they are incurred, independent of when cash actually changes hands."
+    },
+    {
+        "id": 12,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "Which of the following is classified as a current asset?",
+        "options": [
+            "Accounts Receivable",
+            "Goodwill",
+            "Property, Plant and Equipment",
+            "Long-term Debt"
+        ],
+        "answer": "Accounts Receivable",
+        "explanation": "Current assets are expected to be converted to cash within one year. Accounts receivable, money owed by customers, is a typical current asset."
+    },
+    {
+        "id": 13,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Medium",
+        "question": "If a company records $100 of depreciation and its tax rate is 25%, by how much does net income change, all else equal?",
+        "options": [
+            "Decreases by $75",
+            "Decreases by $100",
+            "Decreases by $25",
+            "No change"
+        ],
+        "answer": "Decreases by $75",
+        "explanation": "Depreciation of $100 lowers pre-tax income by $100. After a 25% tax shield, net income falls by $100 × (1 - 0.25) = $75."
+    },
+    {
+        "id": 14,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Medium",
+        "question": "How does an increase in accounts receivable affect cash flow from operations?",
+        "options": [
+            "Decreases it",
+            "Increases it",
+            "No effect",
+            "Increases net income"
+        ],
+        "answer": "Decreases it",
+        "explanation": "A rise in accounts receivable means revenue was recorded but cash has not yet been collected, so it is a use of cash that reduces operating cash flow."
+    },
+    {
+        "id": 15,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Medium",
+        "question": "On the cash flow statement, where is depreciation added back?",
+        "options": [
+            "Cash flow from operations",
+            "Cash flow from investing",
+            "Cash flow from financing",
+            "It is not added back"
+        ],
+        "answer": "Cash flow from operations",
+        "explanation": "Depreciation is a non-cash expense that reduced net income, so it is added back within cash flow from operations."
+    },
+    {
+        "id": 16,
+        "role": "Investment Banking",
+        "topic": "Accounting",
+        "difficulty": "Medium",
+        "question": "During a period of rising prices, which inventory method typically produces higher net income?",
+        "options": [
+            "FIFO",
+            "LIFO",
+            "Weighted Average",
+            "Specific Identification"
+        ],
+        "answer": "FIFO",
+        "explanation": "Under FIFO in a rising-price environment, older and cheaper costs flow to COGS, lowering COGS and producing higher net income than LIFO."
+    },
+    {
+        "id": 17,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Easy",
+        "question": "How is the Price-to-Earnings (P/E) ratio calculated?",
+        "options": [
+            "Share Price / Earnings per Share",
+            "Earnings per Share / Share Price",
+            "Market Capitalization / Revenue",
+            "Enterprise Value / EBITDA"
+        ],
+        "answer": "Share Price / Earnings per Share",
+        "explanation": "The P/E ratio divides the share price by earnings per share, showing how much investors pay for each unit of earnings."
+    },
+    {
+        "id": 18,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Easy",
+        "question": "Which valuation method estimates value as the present value of expected future cash flows?",
+        "options": [
+            "Discounted Cash Flow (DCF)",
+            "Comparable Companies Analysis",
+            "Precedent Transactions",
+            "Book Value"
+        ],
+        "answer": "Discounted Cash Flow (DCF)",
+        "explanation": "A DCF values a business by discounting its projected future cash flows back to the present using an appropriate discount rate."
+    },
+    {
+        "id": 19,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Easy",
+        "question": "How is Market Capitalization calculated?",
+        "options": [
+            "Share Price × Shares Outstanding",
+            "Total Assets - Total Liabilities",
+            "Enterprise Value + Cash",
+            "Net Income × P/E Ratio"
+        ],
+        "answer": "Share Price × Shares Outstanding",
+        "explanation": "Market capitalization equals the current share price multiplied by the total number of shares outstanding."
+    },
+    {
+        "id": 20,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Easy",
+        "question": "Which multiple is capital-structure neutral and useful for comparing firms with different debt levels?",
+        "options": [
+            "EV/EBITDA",
+            "P/E",
+            "Price/Book",
+            "Dividend Yield"
+        ],
+        "answer": "EV/EBITDA",
+        "explanation": "EV/EBITDA uses enterprise value and pre-interest earnings, making it independent of capital structure, unlike the equity-based P/E ratio."
+    },
+    {
+        "id": 21,
+        "role": "Investment Banking",
+        "topic": "Investment Banking",
+        "difficulty": "Hard",
+        "question": "In an all-stock acquisition, the deal is generally accretive when:",
+        "options": [
+            "The acquirer's P/E is higher than the target's P/E",
+            "The acquirer's P/E is lower than the target's P/E",
+            "Both companies have the same P/E",
+            "The target has no earnings"
+        ],
+        "answer": "The acquirer's P/E is higher than the target's P/E",
+        "explanation": "In an all-stock deal, when the acquirer's P/E exceeds the target's, it effectively buys earnings more cheaply than its own, making the transaction accretive."
+    },
+    {
+        "id": 22,
+        "role": "Investment Banking",
+        "topic": "Investment Banking",
+        "difficulty": "Hard",
+        "question": "In a leveraged buyout (LBO), investor returns are primarily driven by:",
+        "options": [
+            "Debt paydown, operational improvement, and multiple expansion",
+            "Issuing additional equity",
+            "Increasing the share count",
+            "Paying higher taxes"
+        ],
+        "answer": "Debt paydown, operational improvement, and multiple expansion",
+        "explanation": "LBO returns come from using cash flow to repay debt, improving operations and EBITDA, and selling the business at a higher exit multiple."
+    },
+    {
+        "id": 23,
+        "role": "Investment Banking",
+        "topic": "Investment Banking",
+        "difficulty": "Hard",
+        "question": "In an acquisition, goodwill is best described as:",
+        "options": [
+            "The premium paid above the fair value of net identifiable assets",
+            "The target's cash balance",
+            "The acquirer's retained earnings",
+            "The total purchase price"
+        ],
+        "answer": "The premium paid above the fair value of net identifiable assets",
+        "explanation": "Goodwill arises when the purchase price exceeds the fair value of the target's net identifiable assets acquired."
+    },
+    {
+        "id": 24,
+        "role": "Investment Banking",
+        "topic": "Investment Banking",
+        "difficulty": "Hard",
+        "question": "A company would most likely issue convertible bonds to:",
+        "options": [
+            "Lower its interest cost while offering potential equity upside",
+            "Immediately dilute shareholders",
+            "Avoid raising any capital",
+            "Eliminate all of its existing debt"
+        ],
+        "answer": "Lower its interest cost while offering potential equity upside",
+        "explanation": "Convertible bonds carry lower coupons than straight debt because investors receive an option to convert into equity, reducing the issuer's financing cost."
+    },
+    {
+        "id": 25,
+        "role": "Equity Research",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "A stock trades at ₹500 with EPS of ₹25. What is its P/E ratio?",
+        "options": [
+            "20x",
+            "10x",
+            "25x",
+            "5x"
+        ],
+        "answer": "20x",
+        "explanation": "P/E = Share Price / EPS = ₹500 / ₹25 = 20x."
+    },
+    {
+        "id": 26,
+        "role": "Equity Research",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "Using the Gordon Growth Model, a stock with a next-year dividend of ₹10, cost of equity of 12%, and growth of 2% is worth:",
+        "options": [
+            "₹100",
+            "₹120",
+            "₹83",
+            "₹200"
+        ],
+        "answer": "₹100",
+        "explanation": "Value = D1 / (r - g) = ₹10 / (0.12 - 0.02) = ₹10 / 0.10 = ₹100."
+    },
+    {
+        "id": 27,
+        "role": "Equity Research",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "If a company's ROE is 15% and it retains 40% of its earnings, what is its sustainable growth rate?",
+        "options": [
+            "6%",
+            "15%",
+            "40%",
+            "9%"
+        ],
+        "answer": "6%",
+        "explanation": "Sustainable growth rate = ROE × retention ratio = 15% × 0.40 = 6%."
+    },
+    {
+        "id": 28,
+        "role": "Equity Research",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "All else equal, a higher discount rate in a DCF will:",
+        "options": [
+            "Lower the present value",
+            "Raise the present value",
+            "Have no effect on value",
+            "Increase future cash flows"
+        ],
+        "answer": "Lower the present value",
+        "explanation": "A higher discount rate reduces the present value of future cash flows, which lowers the overall valuation."
+    },
+    {
+        "id": 29,
+        "role": "Equity Research",
+        "topic": "Financial Markets",
+        "difficulty": "Easy",
+        "question": "What does a bond's coupon rate represent?",
+        "options": [
+            "The annual interest paid relative to face value",
+            "The bond's current market price",
+            "The issuer's credit rating",
+            "The bond's maturity date"
+        ],
+        "answer": "The annual interest paid relative to face value",
+        "explanation": "The coupon rate is the annual interest payment expressed as a percentage of the bond's face (par) value."
+    },
+    {
+        "id": 30,
+        "role": "Equity Research",
+        "topic": "Financial Markets",
+        "difficulty": "Easy",
+        "question": "There is generally an inverse relationship between bond prices and:",
+        "options": [
+            "Interest rates",
+            "Company revenue",
+            "Dividend payments",
+            "Share count"
+        ],
+        "answer": "Interest rates",
+        "explanation": "When market interest rates rise, the prices of existing bonds fall, and when rates fall, bond prices rise, an inverse relationship."
+    },
+    {
+        "id": 31,
+        "role": "Equity Research",
+        "topic": "Financial Markets",
+        "difficulty": "Easy",
+        "question": "What is a bull market?",
+        "options": [
+            "A market experiencing sustained rising prices",
+            "A market with sustained falling prices",
+            "A market with no trading activity",
+            "A market only for commodities"
+        ],
+        "answer": "A market experiencing sustained rising prices",
+        "explanation": "A bull market refers to a period of sustained increases in asset prices and generally optimistic investor sentiment."
+    },
+    {
+        "id": 32,
+        "role": "Equity Research",
+        "topic": "Financial Markets",
+        "difficulty": "Easy",
+        "question": "What does liquidity refer to in financial markets?",
+        "options": [
+            "How easily an asset can be bought or sold without affecting its price",
+            "The total profit of a company",
+            "The amount of debt a firm holds",
+            "The dividend yield of a stock"
+        ],
+        "answer": "How easily an asset can be bought or sold without affecting its price",
+        "explanation": "Liquidity measures how quickly and easily an asset can be converted to cash with minimal impact on its price."
+    },
+    {
+        "id": 33,
+        "role": "Financial Analyst",
+        "topic": "Corporate Finance",
+        "difficulty": "Medium",
+        "question": "What does a positive Net Present Value (NPV) indicate about a project?",
+        "options": [
+            "It is expected to add value and should generally be accepted",
+            "It should always be rejected",
+            "It has no effect on firm value",
+            "It guarantees zero risk"
+        ],
+        "answer": "It is expected to add value and should generally be accepted",
+        "explanation": "A positive NPV means the project's discounted cash inflows exceed its costs, so it is expected to create value for the firm."
+    },
+    {
+        "id": 34,
+        "role": "Financial Analyst",
+        "topic": "Corporate Finance",
+        "difficulty": "Medium",
+        "question": "The Weighted Average Cost of Capital (WACC) represents:",
+        "options": [
+            "The blended required return of a firm's debt and equity",
+            "Only the cost of equity",
+            "Only the interest rate on debt",
+            "The company's effective tax rate"
+        ],
+        "answer": "The blended required return of a firm's debt and equity",
+        "explanation": "WACC is the weighted average of the after-tax cost of debt and the cost of equity, based on their proportions in the capital structure."
+    },
+    {
+        "id": 35,
+        "role": "Financial Analyst",
+        "topic": "Corporate Finance",
+        "difficulty": "Medium",
+        "question": "Which of the following increases a company's financial leverage?",
+        "options": [
+            "Taking on more debt",
+            "Issuing more equity",
+            "Repaying existing debt",
+            "Increasing its cash balance"
+        ],
+        "answer": "Taking on more debt",
+        "explanation": "Financial leverage rises as a firm uses more debt relative to equity in its capital structure."
+    },
+    {
+        "id": 36,
+        "role": "Financial Analyst",
+        "topic": "Corporate Finance",
+        "difficulty": "Medium",
+        "question": "The internal rate of return (IRR) is the discount rate at which:",
+        "options": [
+            "NPV equals zero",
+            "NPV is maximized",
+            "Cash flows are doubled",
+            "The payback period is zero"
+        ],
+        "answer": "NPV equals zero",
+        "explanation": "IRR is defined as the discount rate that makes the net present value of a project's cash flows equal to zero."
+    },
+    {
+        "id": 37,
+        "role": "Financial Analyst",
+        "topic": "Financial Modelling",
+        "difficulty": "Medium",
+        "question": "In a three-statement model, the statements are primarily linked through:",
+        "options": [
+            "Net income and the ending cash balance",
+            "Only revenue",
+            "Only the tax rate",
+            "The company's share price"
+        ],
+        "answer": "Net income and the ending cash balance",
+        "explanation": "Net income flows into retained earnings and the cash flow statement, and the ending cash balance links back to the balance sheet, integrating all three statements."
+    },
+    {
+        "id": 38,
+        "role": "Financial Analyst",
+        "topic": "Financial Modelling",
+        "difficulty": "Medium",
+        "question": "A circular reference in a financial model is commonly caused by:",
+        "options": [
+            "Interest expense depending on debt, which depends on cash, which depends on interest",
+            "Hardcoding revenue figures",
+            "Using absolute cell references",
+            "Adding a new worksheet"
+        ],
+        "answer": "Interest expense depending on debt, which depends on cash, which depends on interest",
+        "explanation": "Interest calculated on a debt balance that itself depends on cash flow after interest creates a circularity, a common modelling issue."
+    },
+    {
+        "id": 39,
+        "role": "Financial Analyst",
+        "topic": "Financial Modelling",
+        "difficulty": "Medium",
+        "question": "Which of the following is a best practice in financial modelling?",
+        "options": [
+            "Clearly separate inputs, calculations, and outputs",
+            "Hardcode numbers inside formulas",
+            "Avoid labeling assumptions",
+            "Combine everything into a single large formula"
+        ],
+        "answer": "Clearly separate inputs, calculations, and outputs",
+        "explanation": "Separating assumptions, calculations, and outputs makes a model transparent, auditable, and easy to update."
+    },
+    {
+        "id": 40,
+        "role": "Financial Analyst",
+        "topic": "Financial Modelling",
+        "difficulty": "Medium",
+        "question": "What is the purpose of scenario analysis in a financial model?",
+        "options": [
+            "To evaluate outcomes under different sets of assumptions",
+            "To delete historical data",
+            "To remove all formulas",
+            "To fix the output to a single value"
+        ],
+        "answer": "To evaluate outcomes under different sets of assumptions",
+        "explanation": "Scenario analysis examines how model outputs change under distinct combinations of assumptions, such as base, bull, and bear cases."
+    },
+    {
+        "id": 41,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "In a DCF, unlevered free cash flow is discounted using:",
+        "options": [
+            "WACC",
+            "Cost of equity",
+            "The risk-free rate",
+            "Dividend yield"
+        ],
+        "answer": "WACC",
+        "explanation": "Unlevered free cash flow belongs to all capital providers, so it is discounted at the weighted average cost of capital (WACC)."
+    },
+    {
+        "id": 42,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "Using the perpetuity growth method, terminal value is calculated as:",
+        "options": [
+            "Final-year FCF × (1 + g) / (WACC - g)",
+            "Final-year FCF × WACC",
+            "Final-year FCF / WACC × g",
+            "Final-year FCF × (WACC - g)"
+        ],
+        "answer": "Final-year FCF × (1 + g) / (WACC - g)",
+        "explanation": "The Gordon growth terminal value grows the final-year free cash flow by g and divides by (WACC - g)."
+    },
+    {
+        "id": 43,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "Which method typically yields a higher valuation due to control premiums?",
+        "options": [
+            "Precedent transactions",
+            "Comparable companies",
+            "They are always identical",
+            "Neither can be compared"
+        ],
+        "answer": "Precedent transactions",
+        "explanation": "Precedent transactions often include a control premium paid in acquisitions, which tends to produce higher valuations than trading comparables."
+    },
+    {
+        "id": 44,
+        "role": "Investment Banking",
+        "topic": "Valuation",
+        "difficulty": "Medium",
+        "question": "If a company's Enterprise Value is ₹1,000 and EBITDA is ₹100, what is its EV/EBITDA multiple?",
+        "options": [
+            "10x",
+            "5x",
+            "100x",
+            "1x"
+        ],
+        "answer": "10x",
+        "explanation": "EV/EBITDA = ₹1,000 / ₹100 = 10x."
+    },
+    {
+        "id": 45,
+        "role": "Equity Research",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "How is gross profit calculated?",
+        "options": [
+            "Revenue - Cost of Goods Sold",
+            "Revenue - Operating Expenses",
+            "Net Income + Taxes",
+            "Revenue - Net Income"
+        ],
+        "answer": "Revenue - Cost of Goods Sold",
+        "explanation": "Gross profit equals revenue minus the cost of goods sold, measured before operating expenses, interest, and taxes."
+    },
+    {
+        "id": 46,
+        "role": "Equity Research",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "Which of the following is a liability?",
+        "options": [
+            "Accounts Payable",
+            "Inventory",
+            "Cash",
+            "Accounts Receivable"
+        ],
+        "answer": "Accounts Payable",
+        "explanation": "Accounts payable represents amounts a company owes to its suppliers and is therefore classified as a liability."
+    },
+    {
+        "id": 47,
+        "role": "Equity Research",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "What does EBITDA stand for?",
+        "options": [
+            "Earnings Before Interest, Taxes, Depreciation, and Amortization",
+            "Earnings Before Income, Taxes, Dividends, and Assets",
+            "Equity Before Interest, Taxes, Depreciation, and Amortization",
+            "Earnings Before Investment, Tax, Debt, and Amortization"
+        ],
+        "answer": "Earnings Before Interest, Taxes, Depreciation, and Amortization",
+        "explanation": "EBITDA stands for Earnings Before Interest, Taxes, Depreciation, and Amortization, a common proxy for operating profitability."
+    },
+    {
+        "id": 48,
+        "role": "Equity Research",
+        "topic": "Accounting",
+        "difficulty": "Easy",
+        "question": "Net income is often referred to as:",
+        "options": [
+            "The bottom line",
+            "The top line",
+            "Gross margin",
+            "Operating cash flow"
+        ],
+        "answer": "The bottom line",
+        "explanation": "Net income appears at the bottom of the income statement and is commonly called the bottom line."
+    },
+    {
+        "id": 49,
+        "role": "Financial Analyst",
+        "topic": "Financial Markets",
+        "difficulty": "Medium",
+        "question": "What does beta measure?",
+        "options": [
+            "A stock's volatility relative to the overall market",
+            "A company's profit margin",
+            "The dividend growth rate",
+            "A bond's coupon rate"
+        ],
+        "answer": "A stock's volatility relative to the overall market",
+        "explanation": "Beta quantifies the sensitivity of a stock's returns to movements in the broader market; a beta of 1 moves in line with the market."
+    },
+    {
+        "id": 50,
+        "role": "Financial Analyst",
+        "topic": "Financial Markets",
+        "difficulty": "Medium",
+        "question": "According to the CAPM, a stock's expected return increases with:",
+        "options": [
+            "Its beta",
+            "Its dividend only",
+            "Its share count",
+            "Its inventory level"
+        ],
+        "answer": "Its beta",
+        "explanation": "In the Capital Asset Pricing Model, expected return rises with beta through the equity risk premium: Rf + β(Rm - Rf)."
+    },
+    {
+        "id": 51,
+        "role": "Financial Analyst",
+        "topic": "Financial Markets",
+        "difficulty": "Medium",
+        "question": "Diversification primarily reduces which type of risk?",
+        "options": [
+            "Unsystematic (company-specific) risk",
+            "Systematic (market) risk",
+            "Interest rate risk entirely",
+            "Inflation risk to zero"
+        ],
+        "answer": "Unsystematic (company-specific) risk",
+        "explanation": "Diversification reduces firm-specific (unsystematic) risk, but it cannot eliminate systematic risk that affects the whole market."
+    },
+    {
+        "id": 52,
+        "role": "Financial Analyst",
+        "topic": "Financial Markets",
+        "difficulty": "Medium",
+        "question": "A normal, upward-sloping yield curve signals:",
+        "options": [
+            "Higher yields for longer maturities",
+            "Lower yields for longer maturities",
+            "Flat interest rates across maturities",
+            "Negative interest rates"
+        ],
+        "answer": "Higher yields for longer maturities",
+        "explanation": "A normal, upward-sloping yield curve means longer-dated bonds offer higher yields than shorter-dated bonds."
+    },
+    {
+        "id": 53,
+        "role": "Investment Banking",
+        "topic": "Corporate Finance",
+        "difficulty": "Hard",
+        "question": "According to Modigliani-Miller with corporate taxes, increasing leverage can add value because:",
+        "options": [
+            "Interest is tax-deductible, creating a tax shield",
+            "Equity is always cheaper than debt",
+            "Debt carries no risk",
+            "Dividends become tax-free"
+        ],
+        "answer": "Interest is tax-deductible, creating a tax shield",
+        "explanation": "With corporate taxes, debt creates value through the interest tax shield, since interest payments reduce taxable income."
+    },
+    {
+        "id": 54,
+        "role": "Investment Banking",
+        "topic": "Corporate Finance",
+        "difficulty": "Hard",
+        "question": "The optimal capital structure is the mix of debt and equity that:",
+        "options": [
+            "Minimizes WACC and maximizes firm value",
+            "Maximizes the number of shares outstanding",
+            "Eliminates all debt",
+            "Maximizes the effective tax rate"
+        ],
+        "answer": "Minimizes WACC and maximizes firm value",
+        "explanation": "The optimal capital structure balances the tax benefits of debt against the costs of financial distress to minimize WACC and maximize firm value."
+    },
+    {
+        "id": 55,
+        "role": "Investment Banking",
+        "topic": "Corporate Finance",
+        "difficulty": "Hard",
+        "question": "All else equal, as a firm takes on more debt, its cost of equity generally:",
+        "options": [
+            "Increases, because equity becomes riskier",
+            "Decreases steadily",
+            "Stays exactly constant",
+            "Falls to zero"
+        ],
+        "answer": "Increases, because equity becomes riskier",
+        "explanation": "Higher leverage raises the financial risk borne by equity holders, so the required return on equity rises."
+    },
+    {
+        "id": 56,
+        "role": "Investment Banking",
+        "topic": "Corporate Finance",
+        "difficulty": "Hard",
+        "question": "A highly leveraged company in financial distress is most likely to suffer from:",
+        "options": [
+            "Underinvestment and higher borrowing costs",
+            "Lower interest expense",
+            "Guaranteed higher profits",
+            "Automatic credit rating upgrades"
+        ],
+        "answer": "Underinvestment and higher borrowing costs",
+        "explanation": "Financial distress can lead to underinvestment, loss of customers and suppliers, and higher borrowing costs as perceived credit risk rises."
+    }
+]
