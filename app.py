@@ -15,6 +15,7 @@ from services.interview_service import (
     generate_question,
     evaluate_answer,
     summarize_interview,
+    generate_text,
 )
 
 
@@ -48,13 +49,14 @@ def get_gemini_client():
 def get_ai_feedback(question, selected_answer, is_correct):
     """Ask Gemini for personalized feedback on a QUIZ answer.
 
-    Returns a tuple: (feedback_text, failed_flag). If anything goes
-    wrong, failed_flag is True and the caller shows the normal
-    question-bank explanation instead of crashing.
+    Returns a tuple: (feedback_text, status). status is one of
+    "ok", "quota", "transient", "error". On anything other than "ok"
+    the caller keeps showing the standard question-bank explanation, so
+    a Gemini failure never breaks the quiz or scoring.
     """
     client = get_gemini_client()
     if client is None:
-        return None, True
+        return None, "error"
 
     result_word = "correct" if is_correct else "incorrect"
 
@@ -78,32 +80,10 @@ Give short, encouraging feedback using these four markdown sections exactly:
 
 Keep the whole response under 150 words and beginner-friendly."""
 
-    # Retry a few times to ride out transient 503 "high demand" errors.
-    last_error = None
-    for attempt in range(1, 4):
-        try:
-            response = client.models.generate_content(
-                model=MODEL_NAME,
-                contents=prompt,
-            )
-            text = (response.text or "").strip()
-            if text:
-                return text, False
-            last_error = "empty response"
-        except Exception as error:
-            # Log the real cause to the TERMINAL only (never the UI, and
-            # the message does not contain the API key).
-            last_error = error
-            print(
-                f"[Gemini] attempt {attempt}/3 failed: "
-                f"{type(error).__name__}: {error}",
-                file=sys.stderr,
-            )
-        if attempt < 3:
-            time.sleep(1.5)
-
-    print(f"[Gemini] giving up after 3 attempts: {last_error}", file=sys.stderr)
-    return None, True
+    # Uses the shared, status-aware retry layer: transient 503/network
+    # errors are retried with short exponential backoff, while a 429 quota
+    # error fails fast (retrying it immediately cannot help).
+    return generate_text(client, MODEL_NAME, prompt, as_json=False)
 
 
 # ---------------------------------------------------------
@@ -232,7 +212,7 @@ def reset_session():
     st.session_state.answer_submitted = False
     st.session_state.current_selected = None
     st.session_state.ai_feedback = None
-    st.session_state.ai_feedback_failed = False
+    st.session_state.ai_feedback_status = None
     st.session_state.results = []
     st.session_state.score = 0
     st.session_state.finished = False
@@ -711,12 +691,12 @@ def render_quiz():
                 })
 
                 with st.spinner("Getting AI coach feedback..."):
-                    feedback, failed = get_ai_feedback(
+                    feedback, status = get_ai_feedback(
                         question, selected_answer, is_correct
                     )
 
                 st.session_state.ai_feedback = feedback
-                st.session_state.ai_feedback_failed = failed
+                st.session_state.ai_feedback_status = status
 
                 st.rerun()
 
@@ -741,17 +721,37 @@ def render_quiz():
 
         st.info(f"**Explanation:** {question['explanation']}")
 
-    # Feedback shown in its own card below the question card.
+    # Feedback shown in its own card below the question card. The standard
+    # explanation above is ALWAYS shown, so a Gemini failure never removes
+    # useful content — it only affects this optional AI coaching card.
     if st.session_state.answer_submitted:
+        status = st.session_state.ai_feedback_status
         with st.container(border=True):
-            if st.session_state.ai_feedback_failed:
-                st.warning(
-                    "⚠️ AI feedback is temporarily unavailable. "
-                    "The standard explanation above still applies."
-                )
-            elif st.session_state.ai_feedback:
+            if status == "ok" and st.session_state.ai_feedback:
                 st.markdown("### 🤖 AI Coach Feedback")
                 st.markdown(st.session_state.ai_feedback)
+            elif status == "quota":
+                # Quota/rate limit: retrying now cannot help, so no retry
+                # button is offered (avoids obviously-failing retries).
+                st.warning(
+                    "⚠️ AI Coach quota is temporarily unavailable. Your quiz "
+                    "result and standard explanation are still available."
+                )
+            else:
+                # Transient / network / other: a retry may well succeed.
+                st.warning(
+                    "⚠️ AI Coach is temporarily unavailable. Your answer has "
+                    "been recorded and the standard explanation is still "
+                    "available. You can retry AI feedback in a moment."
+                )
+                if st.button("🔄 Retry AI Feedback"):
+                    sel = st.session_state.current_selected
+                    is_corr = sel == question["answer"]
+                    with st.spinner("Retrying AI feedback..."):
+                        fb, stt = get_ai_feedback(question, sel, is_corr)
+                    st.session_state.ai_feedback = fb
+                    st.session_state.ai_feedback_status = stt
+                    st.rerun()
 
         st.metric("Current Score", st.session_state.score)
 
@@ -766,7 +766,7 @@ def render_quiz():
                 st.session_state.answer_submitted = False
                 st.session_state.current_selected = None
                 st.session_state.ai_feedback = None
-                st.session_state.ai_feedback_failed = False
+                st.session_state.ai_feedback_status = None
             st.rerun()
 
 

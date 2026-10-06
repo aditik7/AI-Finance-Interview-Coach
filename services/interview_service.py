@@ -64,14 +64,44 @@ def interviewer_system_instruction(role, difficulty, num_questions):
     )
 
 
-def _generate(client, model_name, prompt, as_json=False):
-    """Call Gemini with retry. Returns (text, ok).
+def classify_error(error):
+    """Classify a Gemini exception so callers can react appropriately.
 
-    ok is False if the client is missing or all attempts fail; the
-    caller then shows a friendly message and offers a retry.
+    Returns one of:
+    - "quota"     : rate/quota exhausted (HTTP 429). Will not recover
+                    immediately, so it should NOT be retried in a tight loop.
+    - "transient" : temporary server/network issue (HTTP 5xx, timeouts).
+                    Safe to retry with backoff.
+    - "error"     : any other (likely permanent) error, e.g. a bad request.
+    """
+    code = getattr(error, "code", None)
+    text = str(error).lower()
+    if code == 429 or "resource_exhausted" in text or "quota" in text \
+            or "rate limit" in text or "429" in text:
+        return "quota"
+    if code in (500, 502, 503, 504) or "unavailable" in text \
+            or "internal error" in text or "deadline" in text \
+            or "timeout" in text or "temporarily" in text \
+            or "connection" in text:
+        return "transient"
+    return "error"
+
+
+def generate_text(client, model_name, prompt, as_json=False,
+                  max_attempts=3, base_delay=1.0):
+    """Call Gemini with status-aware retry. Returns (text, status).
+
+    status is one of "ok", "quota", "transient", "error".
+    - Transient failures (503/5xx/network) and empty responses are retried
+      with short exponential backoff (base_delay * 2**n, e.g. 1s, 2s).
+    - A quota failure (429) is returned immediately WITHOUT retrying,
+      because the daily/rate quota will not recover within a few seconds.
+    - A non-transient error is returned immediately (no point spinning).
+
+    The API key never appears in the prompt or in any logged message.
     """
     if client is None:
-        return None, False
+        return None, "error"
 
     config = None
     if as_json:
@@ -79,8 +109,8 @@ def _generate(client, model_name, prompt, as_json=False):
             response_mime_type="application/json"
         )
 
-    last_error = None
-    for attempt in range(1, 4):
+    last_status = "transient"
+    for attempt in range(1, max_attempts + 1):
         try:
             response = client.models.generate_content(
                 model=model_name,
@@ -89,21 +119,35 @@ def _generate(client, model_name, prompt, as_json=False):
             )
             text = (response.text or "").strip()
             if text:
-                return text, True
-            last_error = "empty response"
+                return text, "ok"
+            last_status = "transient"  # empty response -> retry
         except Exception as error:
-            last_error = error
+            status = classify_error(error)
+            last_status = status
+            # Log cause to the TERMINAL only (type + message, never the key).
             print(
-                f"[AIInterview] attempt {attempt}/3 failed: "
-                f"{type(error).__name__}: {error}",
+                f"[Gemini] attempt {attempt}/{max_attempts} failed "
+                f"({status}): {type(error).__name__}: {error}",
                 file=sys.stderr,
             )
-        if attempt < 3:
-            time.sleep(1.5)
+            if status in ("quota", "error"):
+                return None, status  # do not retry these
+        if attempt < max_attempts:
+            time.sleep(base_delay * (2 ** (attempt - 1)))
 
-    print(f"[AIInterview] giving up after 3 attempts: {last_error}",
-          file=sys.stderr)
-    return None, False
+    print(f"[Gemini] giving up after {max_attempts} attempts "
+          f"(status={last_status})", file=sys.stderr)
+    return None, last_status
+
+
+def _generate(client, model_name, prompt, as_json=False):
+    """Backward-compatible wrapper returning (text, ok_bool).
+
+    Delegates to generate_text() so the AI Interview layer benefits from
+    the same status-aware retry/backoff as the quiz feedback layer.
+    """
+    text, status = generate_text(client, model_name, prompt, as_json=as_json)
+    return text, (status == "ok")
 
 
 def _parse_json(text):
