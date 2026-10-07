@@ -15,7 +15,6 @@ from services.interview_service import (
     generate_question,
     evaluate_answer,
     summarize_interview,
-    generate_text,
 )
 
 
@@ -80,10 +79,50 @@ Give short, encouraging feedback using these four markdown sections exactly:
 
 Keep the whole response under 150 words and beginner-friendly."""
 
-    # Uses the shared, status-aware retry layer: transient 503/network
-    # errors are retried with short exponential backoff, while a 429 quota
-    # error fails fast (retrying it immediately cannot help).
-    return generate_text(client, MODEL_NAME, prompt, as_json=False)
+    # Self-contained, status-aware retry (kept local so the quiz feedback
+    # path does NOT import newer helper symbols from interview_service; this
+    # avoids a boot-time ImportError if that module is cached/stale on a
+    # redeploy). Transient 503/network errors are retried with short
+    # exponential backoff; a 429 quota error fails fast (retrying it
+    # immediately cannot help). Returns (text, status) where status is one
+    # of "ok", "quota", "transient", "error". The API key never appears in
+    # the prompt or in any logged message.
+    last_status = "transient"
+    for attempt in range(1, 4):
+        try:
+            response = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=prompt,
+            )
+            text = (response.text or "").strip()
+            if text:
+                return text, "ok"
+            last_status = "transient"  # empty response -> retry
+        except Exception as error:
+            message = str(error).lower()
+            code = getattr(error, "code", None)
+            if (code == 429 or "resource_exhausted" in message
+                    or "quota" in message or "rate limit" in message
+                    or "429" in message):
+                print(f"[Gemini] quota error: {type(error).__name__}",
+                      file=sys.stderr)
+                return None, "quota"  # do not retry a quota error
+            if (code in (500, 502, 503, 504) or "unavailable" in message
+                    or "internal error" in message or "deadline" in message
+                    or "timeout" in message or "temporarily" in message
+                    or "connection" in message):
+                last_status = "transient"
+                print(
+                    f"[Gemini] transient error attempt {attempt}/3: "
+                    f"{type(error).__name__}", file=sys.stderr)
+            else:
+                print(f"[Gemini] error: {type(error).__name__}",
+                      file=sys.stderr)
+                return None, "error"  # non-transient; do not spin
+        if attempt < 3:
+            time.sleep(1.0 * (2 ** (attempt - 1)))
+
+    return None, last_status
 
 
 # ---------------------------------------------------------
